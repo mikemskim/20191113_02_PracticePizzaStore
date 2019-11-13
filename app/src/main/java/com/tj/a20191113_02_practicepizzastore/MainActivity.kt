@@ -3,6 +3,7 @@ package com.tj.a20191113_02_practicepizzastore
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.tj.a20191113_02_practicepizzastore.adapters.PizzaStoreAdapter
 import com.tj.a20191113_02_practicepizzastore.datas.PizzaStoreData
 import kotlinx.android.synthetic.main.activity_main.*
@@ -22,7 +23,11 @@ class MainActivity : BaseActivity() {
     }
 
     override fun setupEvents() {
-
+        pizzaStoreListView.setOnItemClickListener { parent, view, position, id ->
+            var intent = Intent(mContext, DetailActivity::class.java)
+            intent.putExtra("pizzaStore",pizzaStoreList.get(position))
+            startActivity(intent)
+        }
     }
 
     override fun setValues() {

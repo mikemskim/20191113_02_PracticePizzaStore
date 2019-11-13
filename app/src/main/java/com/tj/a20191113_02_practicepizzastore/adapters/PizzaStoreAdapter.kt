@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.LinearLayout
+import android.widget.ListView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
@@ -36,19 +38,31 @@ class PizzaStoreAdapter(context: Context, res:Int, list: ArrayList<PizzaStoreDat
         var pizzaStoreNameTxt = row.findViewById<TextView>(R.id.pizzaStoreNameTxt)
         var pizzaStoreLogoImg = row.findViewById<CircleImageView>(R.id.pizzaStoreLogoImg)
         var showDetailTxt = row.findViewById<TextView>(R.id.showDetailTxt)
+        var pizzaStoreItem = row.findViewById<LinearLayout>(R.id.pizzaStoreItem)
 
         pizzaStoreNameTxt.text = record.name
         Glide.with(mContext).load(record.logoUrl).into(pizzaStoreLogoImg)
 
-        showDetailTxt.setOnClickListener {
-            var intent = Intent(mContext, DetailActivity::class.java)
 
-            intent.putExtra("name", record.name)
-            intent.putExtra("phoneNum", record.phoneNum)
-            intent.putExtra("logoUrl", record.logoUrl)
-
-            ContextCompat.startActivity(mContext, intent, null)
-        }
+//        pizzaStoreItem.setOnClickListener {
+//            var intent = Intent(mContext, DetailActivity::class.java)
+//
+//            intent.putExtra("name", record.name)
+//            intent.putExtra("phoneNum", record.phoneNum)
+//            intent.putExtra("logoUrl", record.logoUrl)
+//
+//            ContextCompat.startActivity(mContext, intent, null)
+//        }
+//
+//        showDetailTxt.setOnClickListener {
+//            var intent = Intent(mContext, DetailActivity::class.java)
+//
+//            intent.putExtra("name", record.name)
+//            intent.putExtra("phoneNum", record.phoneNum)
+//            intent.putExtra("logoUrl", record.logoUrl)
+//
+//            ContextCompat.startActivity(mContext, intent, null)
+//        }
 
         return row
     }

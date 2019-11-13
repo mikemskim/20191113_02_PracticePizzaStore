@@ -9,6 +9,7 @@ import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.TedPermission
+import com.tj.a20191113_02_practicepizzastore.datas.PizzaStoreData
 import kotlinx.android.synthetic.main.activity_detail.*
 
 class DetailActivity : BaseActivity() {
@@ -48,12 +49,14 @@ class DetailActivity : BaseActivity() {
     override fun setValues() {
         setTitle("피자가게 상세")
 
-        var name = intent.getStringExtra("name")
-        var phoneNum = intent.getStringExtra("phoneNum")
-        var logoUrl = intent.getStringExtra("logoUrl")
+//        var name = intent.getStringExtra("name")
+//        var phoneNum = intent.getStringExtra("phoneNum")
+//        var logoUrl = intent.getStringExtra("logoUrl")
 
-        detailNameTxt.text = name
-        detailPhoneNumTxt.text = phoneNum
-        Glide.with(mContext).load(logoUrl).into(detailLogoImg)
+        var pizzaStoreData = intent.getSerializableExtra("pizzaStore") as PizzaStoreData
+
+        detailNameTxt.text = pizzaStoreData.name
+        detailPhoneNumTxt.text = pizzaStoreData.phoneNum
+        Glide.with(mContext).load(pizzaStoreData.logoUrl).into(detailLogoImg)
     }
 }
